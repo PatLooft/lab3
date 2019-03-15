@@ -1,19 +1,12 @@
 //
 //  main.swift
-//  lab3
+//  lab3PatLooft
 //
-//  Created by Pat Looft on 3/12/19.
-//  Copyright © 2019 Pat Looft. All rights reserved.
+//  Created by helpdesk on 3/14/19.
+//  Copyright © 2019 patlooft. All rights reserved.
 //
 
 import Foundation
 
-var stores: Bookstore;
-stores = Bookstore()!;
-
-var b = Book(theTitle: "test", pages: 0, cost: 3, num: 1)!;
-
-stores.startStore();
-stores.displayPrompt();
-
+print("Hello, World!")
 

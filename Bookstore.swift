@@ -57,10 +57,21 @@ class Bookstore{
                     self.gross += bo.getPrice() * Double(quantity);
                     bo.subtractQuantity(amount: quantity);
                     print("Sold \(quantity) copies of \(bo.getTitle()).");
+                    if(bo.getQuantity() == 0){
+                        var count: Int;
+                        count = 0;
+                        for b in books{
+                            if(b.getTitle() == bo.getTitle()){
+                                break;
+                            }
+                            count+=1;
+                        }
+                        books.remove(at: count)
+                    }
                     return true;
                 }
                 else if(quantity >= 0){//if there is some books left, but not the amount to be sold
-                    self.gross = bo.getPrice() * Double(bo.getQuantity());
+                    self.gross += bo.getPrice() * Double(bo.getQuantity());
                     var count: Int;
                     count = 0;
                     for b in books{
@@ -129,9 +140,10 @@ class Bookstore{
                 
             case 2:
                 print("Which book would you like to sell?");
-                let sellInput = readLine();
-                if(sellInput?.isEmpty)!{
+                var sellInput = readLine();
+                while(sellInput?.isEmpty)!{
                     print("Please try again with a valid title.");
+                    sellInput = readLine();
                 }
                 print("How many copies will be sold?");
                 let amountSelling = receiveValidInt();
